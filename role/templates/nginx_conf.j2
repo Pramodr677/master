@@ -1,0 +1,54 @@
+user  www-data;
+
+error_log  {{ nginx_error_log }};
+
+worker_processes  {{ nginx_worker_processes }};
+
+pid        {{ nginx_pidfile }};
+
+events {
+    worker_connections  {{ nginx_worker_connections }};
+    multi_accept {{ nginx_multi_accept }};
+}
+
+
+http {
+    
+    server_names_hash_bucket_size {{ nginx_server_names_hash_bucket_size }};
+
+    client_max_body_size {{ nginx_client_max_body_size }};
+
+    access_log  {{ nginx_access_log }};
+
+    sendfile        {{ nginx_sendfile }};
+    tcp_nopush      {{ nginx_tcp_nopush }};
+    tcp_nodelay     {{ nginx_tcp_nodelay }};
+
+    keepalive_timeout  {{ nginx_keepalive_timeout }};
+    keepalive_requests {{ nginx_keepalive_requests }};
+
+    server_tokens {{ nginx_server_tokens }};
+
+
+     gzip on;
+
+   server {
+        listen      {{ listen_port }};
+        server_name    {{ host_name }};      
+
+          root   html;
+            index  index.html index.htm;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            ;
+        }
+
+
+
+    include {{ nginx_conf_path }}/*.conf;
+    include {{ nginx_conf_sites_enabled_path }}/*;
+}
