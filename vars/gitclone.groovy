@@ -1,4 +1,4 @@
-
 def call(Map config = [:]) {
-  git branch : 'main' , url: "${config.git}"
+  sh "git clone ${config.url} ${config.branch}"
 }
+
