@@ -1,5 +1,4 @@
 
-
-def call(Map config = [:]) {
-  lnput "${config.message}"
+def call() {
+  input message: 'Do you want to continue', parameters: [booleanParam('select')]
 }
