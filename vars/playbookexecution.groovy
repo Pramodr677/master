@@ -1,8 +1,4 @@
-
 def call(Map config = [:]) {
-  
-  installpackage(name: 'ansible')
-  Approval(message: 'Do you want to proceed')
-  gitclone(git: "${config.git}")
-
+  sh "sudo ${config.package} install ansible -y"
+  sh "ansible-playbook -i ${config.path}/inventory ${config.path}/${config.playbook_name}"
 }
