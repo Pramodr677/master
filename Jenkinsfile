@@ -8,13 +8,13 @@ pipeline {
             }
         }
         
-        stage('Hello') {
+        stage('step') {
             steps {
                 echo 'Hello World'
             }
         }
         
-         stage('Hello') {
+         stage('Hey') {
             steps {
                 echo 'Hello World'
             }
