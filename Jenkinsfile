@@ -20,6 +20,12 @@ pipeline {
             }
         }
         
+        stage('Heyi') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        
         
     }
 }
